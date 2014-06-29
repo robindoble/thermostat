@@ -8,3 +8,7 @@ Thermostat.prototype.maximumTemperature = function() {
 	if (this.powerSavingMode) return 25;
 	return 32;
 };
+
+Thermostat.prototype.minimumTemperature = function() {
+	return 10;
+};

@@ -23,9 +23,18 @@ describe('Our cool thermostat', function(){
     it('is 32 if PSM is off', function(){
       thermostat.powerSavingMode = false;
       expect(thermostat.maximumTemperature()).toEqual(32);
+    });    
+
+  });
+
+  describe('minimum temperature', function(){
+    
+    it('is 10 degrees', function(){
+      expect(thermostat.minimumTemperature()).toEqual(10);
     });
 
   });
+
 
 });
 
