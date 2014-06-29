@@ -99,6 +99,26 @@ describe('Our cool thermostat', function(){
     })
   })
 
+  describe('status', function(){
+    
+    it('is good if temp < 18', function(){
+      thermostat.temperature = 15;
+      expect(thermostat.status()).toEqual('good');
+    });
+  
+    it('is average if < 25', function(){
+      thermostat.temperature = 20;
+      expect(thermostat.status()).toEqual('average');
+    });
+
+    it('is bad if < 32', function(){
+      thermostat.temperature = 28;
+      expect(thermostat.status()).toEqual('bad');
+    });
+
+
+  });
+
 
 });
 

@@ -25,7 +25,12 @@ Thermostat.prototype.warmer = function() {
 }
 };
 
-
 Thermostat.prototype.reset = function() {
 	this.temperature = 20;
+};
+
+Thermostat.prototype.status = function() {
+	if (this.temperature < 18) return 'good';
+	if (this.temperature < 25) return 'average';
+	if (this.temperature < 32) return 'bad';
 };
