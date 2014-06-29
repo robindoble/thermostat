@@ -1,0 +1,10 @@
+- Thermostat starts at 20 degrees
+- Can increase temp with up button
+- Can decrease temp with down button
+- The min temp is 10 degress
+- If power saving mode is on, the max temp is 25
+- If off, the max temp is 32
+- Power saving default is on
+- Can rest temp to 20 by hitting the rest button
+- Thermo color displays green when < 18, yellow when <25, otherwise red
+- After any change a post request is made to localhost with the new temp
