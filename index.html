@@ -1,0 +1,72 @@
+<html>
+
+		<head>
+			<meta charset='utf8'>
+			<title>Thermostat</title>
+			<style>
+				
+				#temperature.bad {
+					color: red;
+				}
+
+				#temperature.average {
+					color: orange;
+				}
+
+				#temperature.good {
+					color: green;
+				}
+
+			</style>
+		</head>
+
+		<body>
+			<h1>
+				<span id='temperature'>
+				</span>
+					'C
+			</h1>
+				<button id='warmer'> &#8593 </button>
+				<button id='cooler'> &#8595 </button>
+				<label for='psm'>Power saving mode</label>
+				<input type='checkbox' id='psm' checked="true">
+
+
+			<script src='http://code.jquery.com/jquery-1.11.1.min.js'></script>	
+			<script src='src/thermostat.js'></script>	
+			<script>
+
+				var thermostat = new Thermostat();
+
+				function updateDisplayandNotifyHardware(){
+						$('#temperature').html(thermostat.temperature);
+						$('#temperature').attr('class','').addClass(
+							thermostat.status());
+						$.post('http://localhost:4567/temperature_change', 
+							{ temperature: thermostat.temperature })
+				}
+
+				$(document).ready(function(){
+					updateDisplayandNotifyHardware();
+
+					$('#warmer').on('click',function(){
+						thermostat.warmer();
+						updateDisplayandNotifyHardware();
+					});
+
+					$('#cooler').on('click',function(){
+						thermostat.cooler();
+						updateDisplayandNotifyHardware();
+					});
+
+					$('#psm').on('change',function(){
+						thermostat.powerSavingMode = $(this).prop('checked');	
+					})
+
+				});
+			
+			</script>
+
+		</body>
+
+</html>
